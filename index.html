@@ -141,6 +141,21 @@ src="https://www.facebook.com/tr?id=1074841008587918&ev=PageView&noscript=1"
     .results-grid{grid-template-columns:1fr;}
     .form-card{padding:28px 20px;}
   }
+
+  .about-section{padding:60px 0;}
+  .about-grid{display:grid;grid-template-columns:240px 1fr;gap:40px;align-items:center;}
+  .about-photo{width:100%;aspect-ratio:1;border-radius:18px;overflow:hidden;border:1px solid var(--border);}
+  .about-photo img{width:100%;height:100%;object-fit:cover;}
+  .about-content h2{font-size:24px;font-weight:700;margin-bottom:6px;}
+  .about-content .about-sub{font-size:13px;color:var(--accent2);font-weight:500;margin-bottom:16px;letter-spacing:0.03em;}
+  .about-content p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:12px;}
+  .about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
+  .about-tag{background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.25);color:var(--accent2);font-size:12px;padding:6px 14px;border-radius:20px;}
+  @media(max-width:600px){
+    .about-grid{grid-template-columns:1fr;text-align:center;}
+    .about-photo{max-width:200px;margin:0 auto;}
+    .about-tags{justify-content:center;}
+  }
 </style>
 </head>
 <body>
@@ -175,6 +190,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <div class="divider"></div>
+
+<div class="wrap">
+  <div class="about-section">
+    <div class="section-label">About Me</div>
+    <div class="about-grid">
+      <div class="about-photo">
+        <img src="about-photo.jpg" alt="Ayoub Bhket">
+      </div>
+      <div class="about-content">
+        <h2>Ayoub Meysara Ayoub Bhket</h2>
+        <div class="about-sub">22 Years Old · B.Sc. Chemistry, Al-Azhar University</div>
+        <p>I've been working in media buying for 2 years, helping brands turn ad spend into real, measurable growth across every major platform.</p>
+        <p>My experience spans pixel setup & tracking, standard websites, and Shopify stores — giving clients a complete, data-driven approach from strategy to execution.</p>
+        <div class="about-tags">
+          <span class="about-tag">Meta Ads</span>
+          <span class="about-tag">Google Ads</span>
+          <span class="about-tag">TikTok Ads</span>
+          <span class="about-tag">Snapchat Ads</span>
+          <span class="about-tag">Pixel Tracking</span>
+          <span class="about-tag">Shopify</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div class="wrap">
   <div class="section">
