@@ -111,6 +111,24 @@ src="https://www.facebook.com/tr?id=1074841008587918&ev=PageView&noscript=1"
   .lightbox.active{display:flex;}
   .lightbox img{max-width:90vw;max-height:90vh;border-radius:12px;object-fit:contain;}
   .lightbox-close{position:absolute;top:20px;right:24px;font-size:32px;color:#fff;cursor:pointer;}
+
+  /* FORM */
+  .form-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:36px 28px;max-width:480px;margin:0 auto;}
+  .form-group{margin-bottom:18px;text-align:left;}
+  .form-group label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px;font-weight:500;}
+  .form-group input{
+    width:100%;background:var(--bg);border:1px solid var(--border);
+    border-radius:9px;padding:12px 14px;color:var(--text);font-size:14px;
+    font-family:'Inter',sans-serif;transition:border-color .2s;
+  }
+  .form-group input:focus{outline:none;border-color:var(--accent);}
+  .form-submit{
+    width:100%;background:var(--grad);color:#fff;border:none;
+    padding:14px;border-radius:10px;font-size:15px;font-weight:600;
+    cursor:pointer;transition:opacity .2s,transform .2s;margin-top:6px;
+  }
+  .form-submit:hover{opacity:.9;transform:translateY(-2px);}
+
   @media(max-width:600px){
     .nav{padding:14px 16px;}
     .nav-fb span:last-child{display:none;}
@@ -121,6 +139,7 @@ src="https://www.facebook.com/tr?id=1074841008587918&ev=PageView&noscript=1"
     .contact-cards{grid-template-columns:1fr;}
     .contact-card.full{grid-column:1;}
     .results-grid{grid-template-columns:1fr;}
+    .form-card{padding:28px 20px;}
   }
 </style>
 </head>
@@ -150,7 +169,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="tagline"><strong>Media Buyer.</strong> Growth Driver. Your Brand's Best Investment.</p>
   <p class="sub-tagline">Scaling brands through data-driven ad campaigns that deliver real, measurable results.</p>
   <div class="cta-row">
-    <a href="mailto:ayoubbhket@gmail.com" class="btn-primary">Let's Work Together</a>
+    <a href="https://wa.me/201555227040" class="btn-primary" target="_blank">Let's Work Together</a>
     <a href="https://wa.me/201555227040" class="btn-ghost" target="_blank">WhatsApp</a>
   </div>
 </section>
@@ -222,6 +241,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="divider"></div>
 
 <div class="wrap">
+  <div class="section">
+    <div class="section-label">Get a Free Consultation</div>
+    <div class="form-card">
+      <form id="leadForm" onsubmit="submitLead(event)">
+        <div class="form-group">
+          <label for="leadName">Full Name</label>
+          <input type="text" id="leadName" required placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label for="leadPhone">Phone Number</label>
+          <input type="tel" id="leadPhone" required placeholder="01xxxxxxxxx">
+        </div>
+        <div class="form-group">
+          <label for="leadField">Field / Industry</label>
+          <input type="text" id="leadField" required placeholder="e.g. Real Estate, E-commerce">
+        </div>
+        <button type="submit" class="form-submit">Send via WhatsApp 💬</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="wrap">
   <div class="contact-section">
     <div class="contact-title">Let's Talk 💬</div>
     <div class="contact-sub">Ready to help you grow your business and achieve real, measurable results.</div>
@@ -259,6 +303,24 @@ function openLightbox(src){
 }
 function closeLightbox(){
   document.getElementById('lightbox').classList.remove('active');
+}
+
+function submitLead(e){
+  e.preventDefault();
+  const name = document.getElementById('leadName').value;
+  const phone = document.getElementById('leadPhone').value;
+  const field = document.getElementById('leadField').value;
+
+  const message = `New Lead Request%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AField: ${encodeURIComponent(field)}`;
+  const waLink = `https://wa.me/201555227040?text=${message}`;
+
+  // Track lead event if pixels are loaded
+  if(typeof fbq !== 'undefined'){ fbq('track', 'Lead'); }
+  if(typeof snaptr !== 'undefined'){ snaptr('track', 'SIGN_UP'); }
+  if(typeof dataLayer !== 'undefined'){ dataLayer.push({'event':'lead_form_submit'}); }
+
+  window.open(waLink, '_blank');
+  document.getElementById('leadForm').reset();
 }
 </script>
 </body>
